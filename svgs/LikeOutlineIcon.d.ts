@@ -1,0 +1,1 @@
+export { default as LikeOutlineIcon } from "./LikeOutlineIcon.svg"

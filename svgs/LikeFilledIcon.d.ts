@@ -1,0 +1,1 @@
+export { default as LikeFilledIcon } from "./LikeFilledIcon.svg"

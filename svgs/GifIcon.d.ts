@@ -1,0 +1,1 @@
+export { default as GifIcon } from "./GifIcon.svg"

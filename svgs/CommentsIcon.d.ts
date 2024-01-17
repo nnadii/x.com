@@ -1,0 +1,1 @@
+export { default as CommentsIcon } from "./CommentsIcon.svg"
