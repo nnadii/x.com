@@ -32,7 +32,6 @@ function Comment({ id, comment }) {
     const [ retweets, setRetweets ] = useState([])
 
 
-
     const startDate = new Date("2023-08-29T12:00:00")
     const endDate = new Date("2023-08-29T16:00:00")
     const formattedDuration = formatDurationInHours(startDate, endDate)
