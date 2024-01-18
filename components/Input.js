@@ -21,12 +21,8 @@ function Input() {
 
     const addImageToPost = (e) => {
         const reader = new FileReader()
-        if(e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0])
-        }
-        reader.onload = (readerEvent) => {
-            setSelectedFile(readerEvent.target.result)
-        }
+        if(e.target.files[0]) reader.readAsDataURL(e.target.files[0])
+        reader.onload = (readerEvent) => { setSelectedFile(readerEvent.target.result)}
     }
 
     const addEmoji = (e) => {
@@ -52,9 +48,7 @@ function Input() {
         if(selectedFile) {
             await uploadString(imageRef, selectedFile, "data_url").then(async () => {
                 const downloadURL = await getDownloadURL(imageRef)
-                await updateDoc(doc(db, "posts", docRef.id), {
-                    image: downloadURL
-                })
+                await updateDoc(doc(db, "posts", docRef.id), { image: downloadURL })
             })
         }
         setLoading(false)
