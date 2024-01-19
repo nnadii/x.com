@@ -36,13 +36,13 @@ function ThreadModal() {
         const postsRef = collection(db, 'threads', threadId, 'comments')
         const q = query(postsRef)
         const fetchData = async () => {
-        try {
-            const querySnapshot = await getDocs(q)
-            const postsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))
-            setPosts(postsData);
-        } catch (error) {
-            console.error('Error fetching comments: ', error);
-        }
+            try {
+                const querySnapshot = await getDocs(q)
+                const postsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))
+                setPosts(postsData);
+            } catch (error) {
+                console.error('Error fetching comments: ', error);
+            }
         }
         fetchData()
     }, [threadId])
@@ -50,11 +50,11 @@ function ThreadModal() {
     const sendComment = async (e) => {
         e.preventDefault()
         await addDoc(collection(db, "threads", threadId, "comments"), {
-        comment: comment,
-        username: session.user.name,
-        tag: session.user.tag,
-        userImg: session.user.image,
-        timestamp: serverTimestamp(),
+            comment: comment,
+            username: session.user.name,
+            tag: session.user.tag,
+            userImg: session.user.image,
+            timestamp: serverTimestamp(),
         })
         setIsOpen(false)
         setComment("")
