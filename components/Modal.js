@@ -30,16 +30,16 @@ function Modal() {
     const endDate = new Date("2023-08-29T16:00:00")
     const formattedDuration = formatDurationInHours(startDate, endDate)
 
-    useEffect(() => onSnapshot(doc(db, "posts", postId), (snapshot) => { setPost(snapshot.data())}), [db])
+    useEffect(() => onSnapshot(doc(db, "posts", postId), (snapshot) => {setPost(snapshot.data())}), [db])
 
     const sendComment = async (e) => {
         e.preventDefault()
         await addDoc(collection(db, "posts", postId, "comments"), {
-        comment: comment,
-        username: session.user.name,
-        tag: session.user.tag,
-        userImg: session.user.image,
-        timestamp: serverTimestamp(),
+            comment: comment,
+            username: session.user.name,
+            tag: session.user.tag,
+            userImg: session.user.image,
+            timestamp: serverTimestamp(),
         })
         setIsOpen(false)
         setComment("")
